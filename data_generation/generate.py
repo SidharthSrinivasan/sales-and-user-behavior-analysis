@@ -3,6 +3,7 @@ import pandas as pd
 
 fake = Faker()
 
+
 # Generate synthetic user data
 def generate_user_data(num_data):
     """
@@ -22,6 +23,7 @@ def generate_user_data(num_data):
         })
     return pd.DataFrame(user_data)
 
+
 def generate_transaction_data(num_data, user_ids):
     """
     Function to generate random synthetic transaction data
@@ -34,13 +36,14 @@ def generate_transaction_data(num_data, user_ids):
     for i in range(num_data):
         transaction_data.append({
             "transaction_id": fake.uuid4(),
-            "user_id": fake.random_element(user_ids), # To indicate which user has purchased
+            "user_id": fake.random_element(user_ids),  # To indicate which user has purchased
             "product": fake.word(),
-            "quantity": fake.random_int(min = 1, max = 5),
+            "quantity": fake.random_int(min=1, max=5),
             "price": round(fake.random_number(digits=3), 2),
             "timestamp": fake.date_time_this_year()
         })
     return pd.DataFrame(transaction_data)
+
 
 # Generate 1000 records of user data
 user_df = generate_user_data(1000)
