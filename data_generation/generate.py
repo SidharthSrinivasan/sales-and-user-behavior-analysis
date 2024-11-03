@@ -45,10 +45,13 @@ def generate_transaction_data(num_data, user_ids):
     return pd.DataFrame(transaction_data)
 
 
-# Generate 1000 records of user data
+# Generate and save 1000 records of user data
 user_df = generate_user_data(1000)
 print(user_df.head())
+user_df.to_csv('synthetic_user_data.csv')
 
-# Generate 5000 records of transaction data
+
+# Generate and save 5000 records of transaction data
 transaction_df = generate_transaction_data(5000, user_df["user_id"].tolist())
 print(transaction_df.head())
+transaction_df.to_csv('synthetic_transaction_data.csv')
